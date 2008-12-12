@@ -50,6 +50,7 @@ for (var i=0; i<sources.length; i++) {
     div.style.borderLeft = "5px solid #DDDDDD"
     div.style.paddingLeft = "10px"
     div.style.marginRight = "20px"
+    div.style.marginRight = "20px"
     div.style.cssFloat = "left"
     document.body.appendChild(div)
     div.appendChild(def)    
