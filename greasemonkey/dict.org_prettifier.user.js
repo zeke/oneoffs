@@ -20,6 +20,12 @@ header_links.parentNode.removeChild(header_links)
 var form = document.getElementsByTagName('form')[0]
 form.setAttribute('method','get')
 
+// Make the search field more noticable, so it doubles as a heading
+var query = document.getElementsByTagName('input')[1]
+query.style.fontSize = "16px"
+query.style.width = "200px"
+query.style.paddingTop = query.style.paddingBottom = "0"
+
 // Collect the needed fields
 var f1 = document.getElementsByTagName('td')[1].innerHTML.replace("<br>", "");
 var f2 = document.getElementsByTagName('td')[3].innerHTML.replace("<br>", "");
@@ -35,6 +41,7 @@ var new_fields = document.createElement("span")
 new_fields.innerHTML = f1+f2+f3+f4
 form.appendChild(new_fields)
 
+
 // Clean up text styles
 // -----------------------------------------------------------------------------------
 
@@ -45,16 +52,32 @@ for (var i=0; i<sources.length; i++) {
   if (source.innerHTML.indexOf("From") == 0) {
     var def = source.nextSibling
     var div = document.createElement("div")
-    div.innerHTML = "<h2>" + source.innerHTML.replace("From ", "").replace(":", "") + "</h2>"
-    div.style.width = "500px"
+    div.style.width = "460px"
     div.style.borderLeft = "5px solid #DDDDDD"
     div.style.paddingLeft = "10px"
-    div.style.marginRight = "20px"
+    div.style.marginBottom = "10px"
     div.style.marginRight = "20px"
     div.style.cssFloat = "left"
     document.body.appendChild(div)
+    
+    var h2 = document.createElement("h2")
+    h2.innerHTML = source.innerHTML.replace("From ", "").replace(":", "")
+    
+    div.appendChild(h2)
     div.appendChild(def)    
   }
+}
+
+// Style the sources
+var sources = document.getElementsByTagName('h2');
+for (var i = 0; i < sources.length; i++) {
+  var source = sources[i]
+  source.style.color = "#666666"
+  source.style.fontSize = "15px"
+  source.style.fontWeight = "normal"
+  source.style.fontFamily = "Georgia, Sans"
+  source.style.marginTop = "3px"
+  source.style.marginBottom = "0"
 }
 
 // Style the definitions
@@ -65,16 +88,7 @@ for (var i = 0; i < defs.length; i++) {
   def.style.fontSize = "11px"
   def.style.lineHeight = "16px"
   def.style.fontFamily = "'Lucida Grande', Verdana"
-}
-
-// Style the sources
-var sources = document.getElementsByTagName('h2');
-for (var i = 0; i < sources.length; i++) {
-  var source = sources[i]
-  source.style.color = "#666666"
-  source.style.fontSize = "16px"
-  source.style.fontWeight = "normal"
-  source.style.fontFamily = "Georgia, Sans"
+  def.style.marginTop = "0"
 }
 
 // Style all links
@@ -83,6 +97,7 @@ for (var i = 0; i < links.length; i++) {
   var link = links[i]
   link.style.color = "#0489B7"
 }
+
 
 // Remove Footer, horizontal rules, and bold stuff
 // -----------------------------------------------------------------------------------
