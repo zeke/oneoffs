@@ -25,10 +25,14 @@ function letsJQuery() {
 	var inputs = $("form :text")
 	for (var i=0; i<inputs.length; i++) {
 		var input = inputs[i]
-		var get = value_of_get_param(input.name)
-		if (get != null) {
-			input.value = get
-		}
+		
+		// Try assigning value based on input's DOM name
+		var get_value = value_of_get_param(input.name)
+		if (get_value != null) input.value = get_value
+		
+		// Try assigning value based on input's DOM id
+		var get_value = value_of_get_param(input.id)
+		if (get_value != null) input.value = get_value
 	}
 }
 
