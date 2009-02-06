@@ -41,5 +41,5 @@ function value_of_get_param(name) {
   var regexS = "[\\?&]"+name+"=([^&#]*)"
   var regex = new RegExp( regexS )
   var results = regex.exec( window.location.href )
-  return (results==null) ? null : results[1].replace("+", " ")
+  return (results==null) ? null : results[1].replace(/+/g, " ")
 }
